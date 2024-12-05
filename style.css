@@ -1,0 +1,12 @@
+.carrinho{
+display: none; /* Ocultar por padrão */
+max-width: 400px; /* Definir uma largura fixa para o carrinho */
+position: fixed;
+top: 10%;
+right: 10px; /* Ajuste de posicionamento lateral */
+z-index: 1050;
+background: white;
+box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+border-radius: 8px;
+overflow: hidden;
+}
