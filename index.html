@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Mercado - E-commerce</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Cabeçalho -->
+    <header id="inicio">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+            <div class="container">
+                <!-- Logo com Dropdown -->
+                <div class="dropdown">
+                    <a class="navbar-brand text-warning font-weight-bold dropdown-toggle" href="#" id="dropdownMenuButton" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="/src/image/MIX ( S FUNDO ) amarelo.png" alt="Logo" class="logo-image">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="#modalCadastro" data-bs-toggle="modal">Cadastro</a></li>
+                        <li><a class="dropdown-item" href="#cart-table">Meus Pedidos</a></li>
+                        <li><a class="dropdown-item" href="#promocoes">Promoções</a></li>
+                        <li><a class="dropdown-item" href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <!-- Botão para menu mobile -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Navegação -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <form class="d-flex me-3 ms-auto">
+                        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                        <button class="btn btn-outline-warning" type="submit">Buscar</button>
+                    </form>
+                    <!-- Login com Dropdown -->
+                    <div class="dropdown">
+                        <a href="#" class="btn btn-outline-light dropdown-toggle" id="loginDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user"></i> Login
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end p-4" aria-labelledby="loginDropdown" style="min-width: 300px;">
+                            <h6 class="dropdown-header">Acessar Conta</h6>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="cpfInput" class="form-label">CPF</label>
+                                    <input type="text" class="form-control" id="cpfInput" placeholder="Digite seu CPF">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="passwordInput" class="form-label">Senha</label>
+                                    <input type="password" class="form-control" id="passwordInput" placeholder="Digite sua senha">
+                                </div>
+                                <button type="submit" class="btn btn-warning w-100">Entrar</button>
+                            </form>
+                            <hr>
+                            <button class="btn btn-outline-warning w-100" data-bs-toggle="modal" data-bs-target="#modalCadastro">
+                                Cadastrar
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Carrinho -->
+                    <div class="ms-3">
+                        <button class="btn btn-outline-light" id="cartButton" data-bs-toggle="collapse" data-bs-target="#cart">
+                            <i class="fas fa-shopping-cart"></i> Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Modal de Cadastro -->
+    <div class="modal fade" id="modalCadastro" tabindex="-1" aria-labelledby="modalCadastroLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalCadastroLabel">Cadastro de Usuário</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control" id="nome" placeholder="Digite seu nome completo">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail">
+                        </div>
+                        <div class="mb-3">
+                            <label for="cpf" class="form-label">CPF</label>
+                            <input type="text" class="form-control" id="cpf" placeholder="Digite seu CPF">
+                        </div>
+                        <div class="mb-3">
+                            <label for="senha" class="form-label">Senha</label>
+                            <input type="password" class="form-control" id="senha" placeholder="Crie sua senha">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carrinho de Compras -->
+    <div class="container mt-5 collapse" id="cart">
+        <h1 class="text-center mb-4">Carrinho de Compras</h1>
+
+        <!-- Tabela do carrinho -->
+        <table class="table table-striped" id="cart-table">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Preço</th>
+                    <th>Total</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Itens do carrinho serão inseridos aqui -->
+            </tbody>
+        </table>
+
+        <!-- Exibição do total do carrinho -->
+        <div class="d-flex justify-content-between">
+            <h4 id="cart-total">Total: R$ 0,00</h4>
+        </div>
+        <!-- Opções de retirada e entrega (inicialmente ocultas) -->
+        <div id="opcoes-retirada-entrega" class="collapse">
+            <label>
+                <input type="radio" name="opcao" value="retirada"> Retirada no local
+            </label>
+            <br>
+            <label>
+                <input type="radio" name="opcao" value="entrega"> Tele-entrega
+            </label>
+
+            <!-- Calendário e horário de agendamento -->
+            <div id="calendario">
+                <label for="data-agendamento">Escolha a data e hora:</label>
+                <input id="data-agendamento" type="datetime-local" name="agenda">
+            </div>
+        </div>
+        <div class="d-flex justify-content-end collapse">
+            <button class="btn btn-success me-2">Finalizar Compra</button>
+            <button class="btn btn-danger" id="clear-cart">Limpar Carrinho</button>
+        </div>
+    </div>
+
+    <!-- Carrossel -->
+    <section class="my-4">
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/src/image/patinho.jpg" class="d-block w-100" alt="Promoção de carne bovina">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Promoção: Patinho Bovino</h5>
+                        <p>Aproveite o melhor preço do mercado!</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/src/image/chuleta.jpg" class="d-block w-100" alt="Promoção de chuleta">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Chuleta</h5>
+                        <p>Carne de primeira em oferta!</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/src/image/iogurte.jpg" class="d-block w-100" alt="Promoção de iogurte">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Iogurte Boa Vida</h5>
+                        <p>22g de proteína para sua dieta!</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/src/image/banana.jpg" class="d-block w-100" alt="Promoção de banana prata">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Banana Prata</h5>
+                        <p>O melhor preço para sua família.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Próximo</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Produtos -->
+    <div class="produtos container">
+        <h2 class="text-center">Produtos em Destaque</h2>
+        <div class="row">
+            <!-- Produto 1 -->
+            <div class="col-md-3 text-center mb-4">
+                <img src="/src/image/patinho.jpg" alt="Patinho Bovino" class="img-fluid mb-2">
+                <h5>Patinho Bovino - kg</h5>
+                <p>R$ 35,00</p>
+                <button class="btn btn-primary btn-adicionar" data-nome="Patinho Bovino" data-preco="35.00">Adicionar ao Carrinho</button>
+            </div>
+            <!-- Produto 2 -->
+            <div class="col-md-3 text-center mb-4">
+                <img src="/src/image/chuleta.jpg" alt="Chuleta" class="img-fluid mb-2">
+                <h5>Chuleta - kg</h5>
+                <p>R$ 45,00</p>
+                <button class="btn btn-primary btn-adicionar" data-nome="Chuleta" data-preco="45.00">Adicionar ao Carrinho</button>
+            </div>
+            <!-- Produto 3 -->
+            <div class="col-md-3 text-center mb-4">
+                <img src="/src/image/iogurte.jpg" alt="Iogurte Boa Vida" class="img-fluid mb-2">
+                <h5>Iogurte Boa Vida - 1L</h5>
+                <p>R$ 7,50</p>
+                <button class="btn btn-primary btn-adicionar" data-nome="Iogurte Boa Vida" data-preco="7.75">Adicionar ao Carrinho</button>
+            </div>
+            <!-- Produto 4 -->
+            <div class="col-md-3 text-center mb-4">
+                <img src="/src/image/banana.jpg" alt="Banana Prata" class="img-fluid mb-2">
+                <h5>Banana Prata - kg</h5>
+                <p>R$ 5,00</p>
+                <button class="btn btn-primary btn-adicionar" data-nome="Banana Prata" data-preco="5.00">Adicionar ao Carrinho</button>
+            </div>
+            <!-- Produto 5 -->
+            <div class="col-md-3 text-center mb-4">
+                <img src="/src/image/laranja.jpg" alt="laranja" class="img-fluid mb-2">
+                <h5>Laranja - kg</h5>
+                <p>R$ 3,00</p>
+                <button class="btn btn-primary btn-adicionar" data-nome="laranja" data-preco="3.00">Adicionar ao Carrinho</button>
+            </div>
+            <!-- Produto 6 -->
+            <div class="col-md-3 text-center mb-4">
+                <img src="/src/image/requeijao.jpg" alt="Requeijão" class="img-fluid mb-2">
+                <h5>Requeijão</h5>
+                <p>R$ 5,00</p>
+                <button class="btn btn-primary btn-adicionar" data-nome="Requeijão" data-preco="5.00">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-white bg-dark pt-5 pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Sobre Nós</h5>
+                    <p>Somos uma loja online focada em trazer qualidade e economia para você!</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Links Úteis</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#inicio" class="text-warning">Início</a></li>
+                        <li><a href="#contato" class="text-warning">Contato</a></li>
+                        <li><a href="#ofertas" class="text-warning">Ofertas</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contato</h5>
+                    <p><i class="fas fa-phone"></i> (11) 99999-9999</p>
+                    <p><i class="fas fa-envelope"></i> contato@minhaloja.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
