@@ -92,3 +92,14 @@ document.querySelectorAll('.btn-adicionar').forEach((button) => {
         adicionarAoCarrinho(nomeProduto, precoProduto);
     });
 });
+document.getElementById("finalizar-compra").addEventListener("click", function () {
+    // Seleciona o elemento das opções de retirada e entrega
+    const opcoes = document.getElementById("opcoes-retirada-entrega");
+
+    // Alterna a visibilidade das opções
+    if (opcoes.classList.contains("collapse")) {
+        opcoes.classList.remove("collapse");
+    } else {
+        opcoes.classList.add("collapse");
+    }
+});
