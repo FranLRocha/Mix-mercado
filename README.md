@@ -1,4 +1,4 @@
-## Minimercado
+## Mix mercado
 
 ## Descrição
 
